@@ -87,7 +87,7 @@ function Stake() {
                     src={selected.icon}
                     alt="icon"
                     className={`h-6 w-6 flex-shrink-0 rounded-full ${
-                      selected.name === "nQNT" && "hue-rotate-90"
+                      selected.name === "nQNT" && "hue-rotate-180"
                     }`}
                   />
                   <span className="ml-3 block truncate">{selected.name}</span>
@@ -126,7 +126,7 @@ function Stake() {
                               src={token.icon}
                               alt="icon"
                               className={classNames(
-                                token.name === "nQNT" && "hue-rotate-90",
+                                token.name === "nQNT" && "hue-rotate-180",
                                 "h-6 w-6 flex-shrink-0 rounded-full"
                               )}
                             />
@@ -167,11 +167,14 @@ function Stake() {
   };
 
   return (
-    <div className="mx-auto mt-5 grid max-w-3xl grid-cols-1 gap-6 sm:px-6 lg:max-w-5xl lg:grid-flow-col-dense lg:grid-cols-3">
-      <div className="space-y-6 lg:col-span-2 lg:col-start-1">
-        <section aria-labelledby="stake-form">
+    <>
+      <div className="mx-auto mt-5 grid max-w-3xl grid-cols-1 gap-6 sm:px-6 lg:max-w-5xl lg:grid-flow-col-dense lg:grid-cols-3">
+        <section
+          className="space-y-6 lg:col-span-2 lg:col-start-1"
+          aria-labelledby="stake-form"
+        >
           <div className="bg-[#0a0a0a] p-2 sm:p-5 shadow sm:rounded-lg min-h-[70vh]">
-            <div className="flex items-end justify-between px-4 py-5 sm:px-6 max-w-xl mx-auto">
+            <div className="flex items-end flex-wrap gap-3 justify-between px-4 py-5 sm:px-6 max-w-xl mx-auto">
               <span>
                 <h2
                   id="applicant-information-title"
@@ -183,10 +186,9 @@ function Stake() {
                   stake details and application.
                 </p>
               </span>
-              <span className="ring-2 ring-white px-4 py-2 rounded-full">
-                <p className="mt-1 max-w-2xl text-sm text-white/25">
-                  1 nQNT ={" "}
-                  <span className="text-sm text-white/75">3.3334 QNT</span>
+              <span className="ring-2 ring-white/50 px-4 py-2 rounded-full">
+                <p className="mt-1 max-w-2xl text-sm text-white/50">
+                  1 nQNT = <span className="text-white/75">3.3334 QNT</span>
                 </p>
               </span>
             </div>
@@ -212,7 +214,9 @@ function Stake() {
                   </label>
                   <div className="relative mt-1">
                     <div className="pointer-events-none absolute bottom-1 left-0 flex pl-4 text-md">
-                      <p className="text-white/50">~${stakeQuivalent_in_USD}</p>
+                      <p className="text-white/50 truncate">
+                        ~${stakeQuivalent_in_USD}
+                      </p>
                     </div>
 
                     <input
@@ -226,7 +230,7 @@ function Stake() {
                       onChange={(e) => {
                         SetStakeAmount(e.target.value);
                       }}
-                      className="block w-full appearance-none rounded-md border border-gray-500 px-5 pt-2 pb-4 bg-black placeholder-gray-500 shadow-sm focus:border-gray-200 focus:outline-none focus:ring-gray-200 text-5xl"
+                      className="block w-full appearance-none rounded-md border border-white/50 px-5 pt-2 pb-4 bg-black placeholder-gray-500 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500 text-2xl sm:text-3xl md:text-5xl"
                     />
                     <div className="absolute inset-y-0 right-0 flex items-center pr-4">
                       <Select />
@@ -239,7 +243,7 @@ function Stake() {
                     type="button"
                     className=" flex-shrink-0 rounded-md bg-black p-2 text-white"
                   >
-                    <span className="sr-only">View notifications</span>
+                    <span className="sr-only">switch</span>
                     <ArrowsUpDownIcon className="h-8 w-8 " aria-hidden="true" />
                   </button>
                 </div>
@@ -252,7 +256,7 @@ function Stake() {
                   </label>
                   <div className="relative mt-1">
                     <div className="pointer-events-none absolute bottom-1 left-0 flex pl-4 text-md">
-                      <p className="text-white/50">
+                      <p className="text-white/50 truncate">
                         ~${stakeQuivalent_in_USD * 3.3334}
                       </p>
                     </div>
@@ -266,7 +270,7 @@ function Stake() {
                       required
                       placeholder="0.00"
                       defaultValue={stake_amount * 3.3334}
-                      className="block w-full pointer-events-none appearance-none rounded-md border border-gray-500 px-5 pt-2 pb-4 bg-black placeholder-gray-500 shadow-sm focus:border-gray-200 focus:outline-none focus:ring-gray-200 text-5xl"
+                      className="block w-full pointer-events-none appearance-none rounded-md border border-white/50 px-5 pt-2 pb-4 bg-black placeholder-gray-500 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500 text-2xl sm:text-3xl md:text-5xl"
                     />
                     <div className=" pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
                       <Select nQNT={true} />
@@ -289,7 +293,7 @@ function Stake() {
                 <div>
                   <button
                     type="submit"
-                    className="flex w-full justify-center rounded-md border border-transparent bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 py-6 px-12 text-lg font-bold text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+                    className="flex w-full justify-center rounded-md border border-transparent bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-orange-500  py-6 px-12 text-lg font-bold text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
                   >
                     Stake Quantum
                   </button>
@@ -298,55 +302,21 @@ function Stake() {
             </div>
           </div>
         </section>
-      </div>
 
-      <section
-        aria-labelledby="stake-overview"
-        className="lg:col-span-1 lg:col-start-3"
-      >
-        <div className="bg-[#0a0a0a] px-4 py-5 shadow sm:rounded-lg sm:px-6 min-h-[70vh]">
-          <div className="border-b border-white/25  py-5 max-w-xl mx-auto">
-            <h2 className="text-2xl uppercase font-bold leading-6 text-white">
-              Overview
-            </h2>
-          </div>
-          <div className="flex items-center pt-10 pb-5">
-            <div className=" p-3 ring-1 ring-white/25 rounded-lg">
-              <Image
-                className="h-7 w-7  rounded-full hue-rotate-90"
-                src={ETH}
-                alt="icon"
-              />
+        <section
+          aria-labelledby="stake-overview"
+          className="lg:col-span-1 lg:col-start-3 h-full"
+        >
+          <div className="bg-[#0a0a0a] px-4 py-5 shadow sm:rounded-lg sm:px-6 min-h-full">
+            <div className="border-b border-white/25  py-5 max-w-xl mx-auto">
+              <h2 className="text-2xl uppercase font-bold leading-6 text-white">
+                Overview
+              </h2>
             </div>
-            <div className="ml-3 text-sm font-normal text-gray-500">
-              <p className="text-white">nQNT</p>
-              <p className="text-white font-bold">0.000</p>
-              <p className="text-white/50 font-thin text-[10px]">
-                ~${stakeQuivalent_in_USD * 3.3334}
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col items-start py-5 border-b border-white/25 ">
-            <p className="block mb-4 text-white/25 text-sm ">Staked</p>
-            <div className="flex items-center ">
-              <div className=" p-3 ring-1 ring-white/25 rounded-lg">
-                <Image className="h-7 w-7  rounded-full" src={ETH} alt="" />
-              </div>
-              <div className="ml-3 text-sm font-normal text-gray-500">
-                <p className="text-white">QNT</p>
-                <p className="text-white font-bold">0.000</p>
-                <p className="text-white/50 font-thin text-[10px]">
-                  ~${stakeQuivalent_in_USD * 3.3334}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col items-start pt-5 pb-10 ">
-            <p className="block mb-4 text-white/25 text-sm ">Balance</p>
-            <div className="flex items-center ">
+            <div className="flex items-center pt-10 pb-5">
               <div className=" p-3 ring-1 ring-white/25 rounded-lg">
                 <Image
-                  className="h-7 w-7  rounded-full hue-rotate-90"
+                  className="h-7 w-7  rounded-full hue-rotate-180"
                   src={ETH}
                   alt="icon"
                 />
@@ -359,24 +329,70 @@ function Stake() {
                 </p>
               </div>
             </div>
+            <div className="flex flex-col items-start py-5 border-b border-white/25 ">
+              <p className="block mb-4 text-white/25 text-sm ">Staked</p>
+              <div className="flex items-center ">
+                <div className=" p-3 ring-1 ring-white/25 rounded-lg">
+                  <Image className="h-7 w-7  rounded-full" src={ETH} alt="" />
+                </div>
+                <div className="ml-3 text-sm font-normal text-gray-500">
+                  <p className="text-white">QNT</p>
+                  <p className="text-white font-bold">0.000</p>
+                  <p className="text-white/50 font-thin text-[10px]">
+                    ~${stakeQuivalent_in_USD * 3.3334}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col items-start pt-5 pb-10 ">
+              <p className="block mb-4 text-white/25 text-sm ">Balance</p>
+              <div className="flex items-center ">
+                <div className=" p-3 ring-1 ring-white/25 rounded-lg">
+                  <Image
+                    className="h-7 w-7  rounded-full hue-rotate-180"
+                    src={ETH}
+                    alt="icon"
+                  />
+                </div>
+                <div className="ml-3 text-sm font-normal text-gray-500">
+                  <p className="text-white">nQNT</p>
+                  <p className="text-white font-bold">0.000</p>
+                  <p className="text-white/50 font-thin text-[10px]">
+                    ~${stakeQuivalent_in_USD * 3.3334}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col  rounded-md gap-3  justify-between shadow-xl">
+              <span className=" flex justify-between items-center max-w-2xl text-sm text-white/50 p-2 rounded-sm ring-1 ring-gray-700">
+                <span>Approximate Staking APR</span>
+                <span className="text-white font-bold">14.90%</span>
+              </span>
+              <span className=" flex justify-between items-center max-w-2xl text-sm text-white/50 p-2 rounded-sm ring-1 ring-gray-700">
+                <span>Total QNT Locked</span>
+                <span className="text-white font-bold">14,536,373.3</span>
+              </span>
+              <span className=" flex justify-between items-center max-w-2xl text-sm text-white/50 p-2 rounded-sm ring-1 ring-gray-700">
+                <span>Staked Protocol Fees</span>
+                <span className="text-white font-bold">$1,434,544</span>
+              </span>
+            </div>
           </div>
-          <div className="flex flex-col  rounded-md gap-3  justify-between shadow-xl">
-            <span className=" flex justify-between items-center max-w-2xl text-sm text-white/50 p-2 rounded-sm ring-1 ring-gray-700">
-              <span>Approximate Staking APR</span>
-              <span className="text-white font-bold">14.90%</span>
-            </span>
-            <span className=" flex justify-between items-center max-w-2xl text-sm text-white/50 p-2 rounded-sm ring-1 ring-gray-700">
-              <span>Total QNT Locked</span>
-              <span className="text-white font-bold">14,536,373.3</span>
-            </span>
-            <span className=" flex justify-between items-center max-w-2xl text-sm text-white/50 p-2 rounded-sm ring-1 ring-gray-700">
-              <span>Staked Protocol Fees</span>
-              <span className="text-white font-bold">$1,434,544</span>
-            </span>
-          </div>
-        </div>
+        </section>
+      </div>
+      <section className="max-w-5xl mx-auto m-12 ">
+        <p className="text-sm text-justify font-light bg-[#0a0a0a] p-6 rounded-md sm:m-6">
+          Quantum Finance is moving finance into the quantum age. We develop
+          quantum algorithms which model the financial system as a quantum
+          system, where value is described by a wave function and market
+          transactions are a form of quantum measurement. The models we are
+          developing – which are based on years of research in the new field of
+          quantum finance – out-perform classical models in terms of accuracy,
+          and have the additional advantage of being quantum-native, so are
+          ready to implement on quantum devices as they become available.
+        </p>
       </section>
-    </div>
+    </>
   );
 }
 

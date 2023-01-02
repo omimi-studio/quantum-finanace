@@ -16,9 +16,9 @@
 */
 import { Fragment } from "react";
 import { Menu, Popover, Transition } from "@headlessui/react";
-
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import avatar from "../../assets/logos/ethereum-eth.svg";
+import logo from "../../assets/logos/logo.svg";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -46,7 +46,7 @@ export default function Header() {
           <div className="flex px-2 lg:px-0 items-center">
             <div className="inline-block flex-shrink-0 items-center">
               <Link href="/" className="font-black text-5xl">
-                Quantum
+                <Image src={logo} className="w-40 h-24" alt="logo" />
               </Link>
             </div>
           </div>
@@ -94,7 +94,11 @@ export default function Header() {
                         <div>
                           <div className="flex flex-shrink-0 items-center">
                             <Link href="/" className="font-black text-5xl">
-                              Quantum
+                              <Image
+                                src={logo}
+                                className="w-20 h-12"
+                                alt="logo"
+                              />
                             </Link>
                           </div>
                         </div>
@@ -173,7 +177,7 @@ export default function Header() {
             <button
               type="button"
               className="flex-shrink-0 ml-4 rounded-full font-medium bg-white px-8 py-4
-                 text-black hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                 text-black hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
             >
               <span className="sr-only">Connect Wallet</span>
               Connect Wallet
